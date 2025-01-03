@@ -8,7 +8,7 @@ console.log("Hello World")
 //HANDLER = function(req,res){res.send("string")}
 //Use the app.get() method to serve the string "Hello Express" to GET requests matching the / (root) path. 
 app.get('/', (req,res)=>{
-    res.send("Hello Express");
+    res.sendFile(__dirname + "/views/index.html");
 });
 
 
