@@ -5,20 +5,30 @@ let app = express();
 console.log("Hello World");
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
-});
+    res.sendFile(__dirname + "/views/index.html");
+  });
 
 app.use('/public', express.static(__dirname + '/public'));
 
+
+
 app.get('/json', (req, res) => {
-  console.log("MESSAGE_STYLE is:", process.env.MESSAGE_STYLE); // Debugging
-  let message = "Hello json"; 
+    let message = "Hello json"; 
+  
+    if (process.env.MESSAGE_STYLE === "uppercase") {
+      message = message.toUpperCase(); 
+    }
+  
+    res.json({ "message": message }); 
+  });
 
-  if (process.env.MESSAGE_STYLE === "uppercase") {
-    message = message.toUpperCase(); 
-  }
 
-  res.json({ "message": message }); 
-});
 
-module.exports = app;
+
+
+
+
+
+
+
+ module.exports = app;
